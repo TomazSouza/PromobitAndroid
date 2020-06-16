@@ -15,17 +15,16 @@ data class ContactEntity(
     var name: String,
     @field:SerializedName("company")
     var company: String,
-    @field:SerializedName("email")
-    var email: String,
-    @field:SerializedName("phone")
-    var phone: String,
-    @field:SerializedName("website")
-    var website: String,
-    @field:SerializedName("custom_note")
-    var customNote: String,
     @field:SerializedName("photo")
-    var photo: String
+    var photo: String,
+    @field:SerializedName("new")
+    var newContact: Boolean
 ) {
     @PrimaryKey(autoGenerate = true)
     var userId: Int = 0
+
+    override fun toString(): String {
+        return "ContactEntity(id=$id, name='$name', company='$company', photo='$photo', newContact=$newContact, userId=$userId)"
+    }
+
 }

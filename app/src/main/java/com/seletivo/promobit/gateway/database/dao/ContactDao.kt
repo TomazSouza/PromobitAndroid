@@ -11,7 +11,7 @@ import com.seletivo.promobit.gateway.database.entity.ContactEntity
 abstract class ContactDao {
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    abstract fun insertContact(contactEntity: ContactEntity)
+    abstract fun insertContact(contactEntity:  MutableList<ContactEntity>)
 
     @Query("SELECT * FROM contactEntity")
     abstract fun getAllContacts(): LiveData<MutableList<ContactEntity>>

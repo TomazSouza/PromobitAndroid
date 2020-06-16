@@ -1,7 +1,11 @@
 package com.seletivo.promobit.di.module
 
+import android.app.Application
+import androidx.room.Room
 import com.seletivo.promobit.BuildConfig
 import com.seletivo.promobit.gateway.WebService
+import com.seletivo.promobit.gateway.database.ContactDb
+import com.seletivo.promobit.gateway.database.dao.ContactDao
 import com.seletivo.promobit.util.livedata.LiveDataCallAdapter
 import com.seletivo.promobit.util.livedata.LiveDataCallAdapterFactory
 import dagger.Module
@@ -20,7 +24,7 @@ class AppModule {
     @Provides
     fun provideWebService(): WebService {
         val interceptor = HttpLoggingInterceptor()
-        interceptor.level = HttpLoggingInterceptor.Level.NONE
+        interceptor.level = HttpLoggingInterceptor.Level.BODY
 
         val client = OkHttpClient.Builder()
             .connectTimeout(5, TimeUnit.SECONDS)
@@ -36,6 +40,21 @@ class AppModule {
             .client(client)
             .build().create(WebService::class.java)
 
+    }
+
+    @Singleton
+    @Provides
+    fun provideContactDb(app: Application): ContactDb {
+        return Room
+            .databaseBuilder(app, ContactDb::class.java, "contact.db")
+            .fallbackToDestructiveMigration()
+            .build()
+    }
+
+    @Singleton
+    @Provides
+    fun provideContactDao(db: ContactDb): ContactDao {
+        return db.contactDao()
     }
 
 }

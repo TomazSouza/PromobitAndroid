@@ -90,7 +90,7 @@ retrofit.gson = "com.squareup.retrofit2:converter-gson:$versions.retrofit"
 retrofit.mock = "com.squareup.retrofit2:retrofit-mock:$versions.retrofit"
 retrofit.interceptor = "com.squareup.okhttp3:logging-interceptor:4.5.0"
 retrofit.rxjava2_adapter = "com.jakewharton.retrofit:retrofit2-rxjava2-adapter:1.0.0"
-retrofit.converter_jackson = "com.squareup.retrofit2:converter-jackson:2.8.1"
+retrofit.converter_jackson = "com.squareup.retrofit2:converter-jackson:$versions.retrofit"
 deps.retrofit = retrofit
 
 def glide = [:]
