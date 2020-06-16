@@ -9,6 +9,15 @@ versions.kotlin = "1.3.72"
 versions.navigation = "2.2.2"
 versions.android_gradle_plugin = '4.0.0'
 versions.multidex64k = "2.0.1"
+versions.annotations = "1.0.0"
+versions.retrofit = "2.8.1"
+versions.timber = "4.7.1"
+versions.room = "2.2.3"
+versions.dagger = "2.16"
+versions.okhttp_logging_interceptor = "4.5.0"
+versions.glide = "4.8.0"
+versions.lifecycle = "2.2.0"
+versions.fragment = "1.2.1"
 ext.versions = versions
 
 def build_versions = [:]
@@ -23,11 +32,18 @@ deps.android_gradle_plugin = "com.android.tools.build:gradle:$versions.android_g
 deps.multidex = "androidx.multidex:multidex:$versions.multidex64k"
 deps.core_ktx = "androidx.core:core-ktx:$versions.core_ktx"
 deps.support_v4 = "androidx.legacy:legacy-support-v4:$versions.legacy_support_v4"
+deps.timber = "com.jakewharton.timber:timber:$versions.timber"
 
 // Material
 deps.app_compat = "androidx.appcompat:appcompat:$versions.appcompat"
 deps.constraint_layout = "androidx.constraintlayout:constraintlayout:$versions.constraint_layout"
 deps.material = "com.google.android.material:material:$versions.material"
+
+def fragment = [:]
+fragment.runtime = "androidx.fragment:fragment:${versions.fragment}"
+fragment.runtime_ktx = "androidx.fragment:fragment-ktx:${versions.fragment}"
+fragment.testing = "androidx.fragment:fragment-testing:${versions.fragment}"
+deps.fragment = fragment
 
 def navigation = [:]
 navigation.fragment_ktx = "androidx.navigation:navigation-fragment-ktx:$versions.navigation"
@@ -37,7 +53,12 @@ navigation.navigation_ui_ktx =  "androidx.navigation:navigation-ui-ktx:$versions
 deps.navigation = navigation
 
 def lifecycle = [:]
-lifecycle.extensions = "androidx.lifecycle:lifecycle-extensions:2.2.0"
+lifecycle.extensions = "androidx.lifecycle:lifecycle-extensions:$versions.lifecycle"
+lifecycle.runtime = "androidx.lifecycle:lifecycle-runtime:$versions.lifecycle"
+lifecycle.java8 = "androidx.lifecycle:lifecycle-common-java8:$versions.lifecycle"
+lifecycle.compiler = "androidx.lifecycle:lifecycle-compiler:$versions.lifecycle"
+lifecycle.viewmodel_ktx = "androidx.lifecycle:lifecycle-viewmodel-ktx:$versions.lifecycle"
+lifecycle.livedata_ktx = "androidx.lifecycle:lifecycle-livedata-ktx:$versions.lifecycle"
 deps.lifecycle = lifecycle
 
 def kotlin = [:]
@@ -46,6 +67,36 @@ kotlin.test = "org.jetbrains.kotlin:kotlin-test-junit:$versions.kotlin"
 kotlin.plugin = "org.jetbrains.kotlin:kotlin-gradle-plugin:$versions.kotlin"
 kotlin.allopen = "org.jetbrains.kotlin:kotlin-allopen:$versions.kotlin"
 deps.kotlin = kotlin
+
+def room = [:]
+room.runtime = "androidx.room:room-runtime:$versions.room"
+room.compiler = "androidx.room:room-compiler:$versions.room"
+room.rxjava2 = "androidx.room:room-rxjava2:$versions.room"
+room.testing = "androidx.room:room-testing:$versions.room"
+room.room_ktx = "androidx.room:room-ktx:$versions.room"
+deps.room = room
+
+def dagger = [:]
+dagger.runtime = "com.google.dagger:dagger:$versions.dagger"
+dagger.android = "com.google.dagger:dagger-android:$versions.dagger"
+dagger.android_support = "com.google.dagger:dagger-android-support:$versions.dagger"
+dagger.compiler = "com.google.dagger:dagger-compiler:$versions.dagger"
+dagger.android_support_compiler = "com.google.dagger:dagger-android-processor:$versions.dagger"
+deps.dagger = dagger
+
+def retrofit = [:]
+retrofit.runtime = "com.squareup.retrofit2:retrofit:$versions.retrofit"
+retrofit.gson = "com.squareup.retrofit2:converter-gson:$versions.retrofit"
+retrofit.mock = "com.squareup.retrofit2:retrofit-mock:$versions.retrofit"
+retrofit.interceptor = "com.squareup.okhttp3:logging-interceptor:4.5.0"
+retrofit.rxjava2_adapter = "com.jakewharton.retrofit:retrofit2-rxjava2-adapter:1.0.0"
+retrofit.converter_jackson = "com.squareup.retrofit2:converter-jackson:2.8.1"
+deps.retrofit = retrofit
+
+def glide = [:]
+glide.runtime = "com.github.bumptech.glide:glide:$versions.glide"
+glide.compiler = "com.github.bumptech.glide:compiler:$versions.glide"
+deps.glide = glide
 
 ext.deps = deps
 

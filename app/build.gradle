@@ -73,14 +73,46 @@ dependencies {
     implementation deps.material
     implementation deps.constraint_layout
 
+    // Timber Logcat
+    implementation deps.timber
+
+    // Glide
+    implementation deps.glide.runtime
+
     // Lifecycle
     implementation deps.lifecycle.extensions
+    implementation deps.lifecycle.viewmodel_ktx
+    implementation deps.lifecycle.extensions
+    implementation deps.lifecycle.livedata_ktx
+    implementation deps.lifecycle.runtime
+    implementation deps.lifecycle.java8
+    kapt deps.lifecycle.compiler
 
     // Navigation and Fragment
     implementation deps.navigation.fragment
     implementation deps.navigation.fragment_ktx
     implementation deps.navigation.navigation_ui
     implementation deps.navigation.navigation_ui_ktx
+
+    // Retrofit
+    implementation deps.retrofit.converter_jackson
+    implementation deps.retrofit.rxjava2_adapter
+    implementation deps.retrofit.runtime
+    implementation deps.retrofit.gson
+    api deps.retrofit.interceptor
+
+    // Dagger 2
+    implementation deps.dagger.runtime
+    implementation deps.dagger.android
+    implementation deps.dagger.android_support
+    kapt deps.dagger.android_support_compiler
+    kapt deps.dagger.compiler
+
+    // RoomDataBase
+    kapt deps.room.compiler
+    implementation deps.room.room_ktx
+    implementation deps.room.runtime
+    implementation deps.room.rxjava2
 
     // Flexbox Layout
     implementation "com.google.android:flexbox:2.0.1"
