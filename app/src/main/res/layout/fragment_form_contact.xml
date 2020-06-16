@@ -201,20 +201,22 @@
             <androidx.appcompat.widget.AppCompatButton
                 android:id="@+id/btnCancelId"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="40dp"
                 android:layout_marginStart="16dp"
                 android:layout_marginLeft="16dp"
                 android:layout_marginEnd="4dp"
                 android:layout_marginRight="4dp"
                 android:layout_marginBottom="10dp"
                 android:layout_marginTop="5dp"
+                android:textColor="@color/solid_btn_color"
+                android:background="@drawable/bg_btn_cancel_drawable"
                 android:text="Cancelar"
                 app:layout_constraintBottom_toBottomOf="parent" />
 
             <androidx.appcompat.widget.AppCompatButton
                 android:id="@+id/btnSaveContactId"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="40dp"
                 android:layout_marginStart="4dp"
                 android:layout_marginLeft="4dp"
                 android:layout_marginEnd="16dp"
@@ -222,6 +224,8 @@
                 android:layout_marginBottom="10dp"
                 android:layout_marginTop="5dp"
                 android:text="Salvar"
+                android:textColor="@color/white"
+                android:background="@drawable/bg_btn_drawable"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent" />
 
