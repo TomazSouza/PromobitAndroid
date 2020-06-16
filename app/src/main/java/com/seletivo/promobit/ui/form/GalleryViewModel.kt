@@ -1,4 +1,4 @@
-package com.seletivo.promobit.ui.gallery
+package com.seletivo.promobit.ui.form
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
