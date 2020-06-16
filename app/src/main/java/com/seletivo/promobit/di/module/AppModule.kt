@@ -2,6 +2,8 @@ package com.seletivo.promobit.di.module
 
 import com.seletivo.promobit.BuildConfig
 import com.seletivo.promobit.gateway.WebService
+import com.seletivo.promobit.util.livedata.LiveDataCallAdapter
+import com.seletivo.promobit.util.livedata.LiveDataCallAdapterFactory
 import dagger.Module
 import dagger.Provides
 import okhttp3.OkHttpClient
@@ -30,6 +32,7 @@ class AppModule {
         return Retrofit.Builder()
             .baseUrl(BuildConfig.BASE_URL)
             .addConverterFactory(GsonConverterFactory.create())
+            .addCallAdapterFactory(LiveDataCallAdapterFactory())
             .client(client)
             .build().create(WebService::class.java)
 

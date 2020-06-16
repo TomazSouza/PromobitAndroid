@@ -5,14 +5,14 @@ import androidx.room.Dao
 import androidx.room.Insert
 import androidx.room.OnConflictStrategy
 import androidx.room.Query
-import com.seletivo.promobit.gateway.database.entity.Contact
+import com.seletivo.promobit.gateway.database.entity.ContactEntity
 
 @Dao
 abstract class ContactDao {
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    abstract fun insertUser(contact: Contact)
+    abstract fun insertContact(contactEntity: ContactEntity)
 
-    @Query("SELECT * FROM contact")
-    abstract fun getStatementList(): LiveData<MutableList<Contact>>
+    @Query("SELECT * FROM contactEntity")
+    abstract fun getAllContacts(): LiveData<MutableList<ContactEntity>>
 }

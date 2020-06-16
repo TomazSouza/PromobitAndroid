@@ -3,9 +3,9 @@ package com.seletivo.promobit.gateway.database
 import androidx.room.Database
 import androidx.room.RoomDatabase
 import com.seletivo.promobit.gateway.database.dao.ContactDao
-import com.seletivo.promobit.gateway.database.entity.Contact
+import com.seletivo.promobit.gateway.database.entity.ContactEntity
 
-@Database(entities = [Contact::class], version = 1, exportSchema = false)
+@Database(entities = [ContactEntity::class], version = 1, exportSchema = false)
 abstract class ContactDb : RoomDatabase() {
-    abstract fun getContactDao() : ContactDao
+    abstract fun contactDao() : ContactDao
 }

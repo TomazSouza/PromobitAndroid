@@ -6,12 +6,23 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.viewModels
+import androidx.lifecycle.ViewModelProvider
 import com.seletivo.promobit.R
 import com.seletivo.promobit.databinding.FragmentFormContactBinding
+import com.seletivo.promobit.di.annotation.Injectable
+import com.seletivo.promobit.util.async.AppExecutors
+import javax.inject.Inject
 
-class ContactFormFragment : Fragment() {
+class ContactFormFragment : Fragment(), Injectable {
 
-//    private lateinit var galleryViewModel: GalleryViewModel
+    @Inject
+    lateinit var mViewModelFactory: ViewModelProvider.Factory
+
+    @Inject
+    lateinit var appExecutors: AppExecutors
+
+    private val mContactViewModel: ContactViewModel by viewModels { mViewModelFactory }
 
     override fun onCreateView(
         inflater: LayoutInflater,

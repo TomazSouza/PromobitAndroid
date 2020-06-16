@@ -1,4 +1,4 @@
-package com.seletivo.promobit.util
+package com.seletivo.promobit.util.async
 
 import android.os.Handler
 import android.os.Looper

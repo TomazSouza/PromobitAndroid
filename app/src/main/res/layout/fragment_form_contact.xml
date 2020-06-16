@@ -10,7 +10,7 @@
 
         <variable
             name="contacts"
-            type="com.seletivo.promobit.db.Contact" />
+            type="com.seletivo.promobit.db.ContactObservable" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -178,7 +178,7 @@
                         android:inputType="textAutoComplete"
                         android:maxLength="100"
                         android:singleLine="false"
-                        android:text="@={contacts.custom_note}" />
+                        android:text="@={contacts.customNote}" />
 
                 </com.google.android.material.textfield.TextInputLayout>
 

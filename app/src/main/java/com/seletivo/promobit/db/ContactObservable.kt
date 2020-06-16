@@ -4,7 +4,7 @@ import androidx.databinding.BaseObservable
 import androidx.databinding.Bindable
 import com.seletivo.promobit.BR
 
-open class Contact : BaseObservable() {
+open class ContactObservable : BaseObservable() {
 
     @get:Bindable
     var name: String? = ""
@@ -42,10 +42,10 @@ open class Contact : BaseObservable() {
         }
 
     @get:Bindable
-    var custom_note: String? = ""
+    var customNote: String? = ""
         set(value) {
             field = value
-            notifyPropertyChanged(BR.custom_note)
+            notifyPropertyChanged(BR.customNote)
         }
 
 }

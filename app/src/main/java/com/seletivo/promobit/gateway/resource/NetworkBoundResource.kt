@@ -4,7 +4,7 @@ import androidx.annotation.MainThread
 import androidx.annotation.WorkerThread
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MediatorLiveData
-import com.seletivo.promobit.util.AppExecutors
+import com.seletivo.promobit.util.async.AppExecutors
 
 
 abstract class NetworkBoundResource<ResultType, RequestType>
