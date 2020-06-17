@@ -15,12 +15,10 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.seletivo.promobit.R
 import com.seletivo.promobit.adapter.ListContactsAdapter
 import com.seletivo.promobit.binding.FragmentDataBindingComponent
-import com.seletivo.promobit.databinding.FragmentFormContactBinding
 import com.seletivo.promobit.databinding.FragmentHomeBinding
 import com.seletivo.promobit.di.annotation.Injectable
 import com.seletivo.promobit.util.async.AppExecutors
 import com.seletivo.promobit.util.autoCleared
-import timber.log.Timber
 import javax.inject.Inject
 
 class HomeFragment : Fragment(), Injectable {
@@ -64,12 +62,11 @@ class HomeFragment : Fragment(), Injectable {
 
         mBinding.lifecycleOwner = viewLifecycleOwner
 
-        mAdapter =ListContactsAdapter(mDataBindingComponent, appExecutors)
+        mAdapter = ListContactsAdapter(mDataBindingComponent, appExecutors)
         mBinding.recyclerView.adapter = mAdapter
 
         mHomeViewModel.getAllContacts().observe(viewLifecycleOwner, Observer {
             if (it.data != null && it.data.isNotEmpty()) {
-                Timber.d( "data %s", it.data)
                 mAdapter.submitList(it.data)
             }
         })

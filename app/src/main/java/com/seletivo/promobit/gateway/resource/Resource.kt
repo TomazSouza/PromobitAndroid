@@ -1,6 +1,6 @@
 package com.seletivo.promobit.gateway.resource
 
-import com.seletivo.promobit.enum.Status
+import com.seletivo.promobit.enums.Status
 
 data class Resource<out T>(val status: Status, val data: T?, val message: String?) {
 

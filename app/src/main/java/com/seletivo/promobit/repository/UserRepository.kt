@@ -2,7 +2,6 @@ package com.seletivo.promobit.repository
 
 import androidx.lifecycle.*
 import com.seletivo.promobit.db.ContactObservable
-import com.seletivo.promobit.enum.Status
 import com.seletivo.promobit.gateway.WebService
 import com.seletivo.promobit.gateway.database.ContactDb
 import com.seletivo.promobit.gateway.database.dao.ContactDao
@@ -14,7 +13,6 @@ import com.seletivo.promobit.gateway.resource.Resource
 import com.seletivo.promobit.gateway.vo.BaseResponse
 import com.seletivo.promobit.util.async.AppExecutors
 import com.seletivo.promobit.util.livedata.AbsentLiveData
-import timber.log.Timber
 import javax.inject.Inject
 import javax.inject.Singleton
 

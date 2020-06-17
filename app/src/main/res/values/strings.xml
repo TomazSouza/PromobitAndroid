@@ -17,4 +17,22 @@
     <string name="label_telefone">Telefone</string>
     <string name="label_site">Site</string>
     <string name="label_adicionar_nota">Adicionar Nota</string>
+    <string name="label_salvar">Salvar</string>
+    <string name="label_cancelar">Cancelar</string>
+
+    <string name="deseja_realmente_sair">Deseja realmente sair?</string>
+    <string name="titulo_aviso">Aviso!</string>
+
+    <string name="regras_senha">Senha com letra maiuscula, um caracter especial e número</string>
+    <string name="servico_indisponivel">Falha ao tentar conectar com o serviço!</string>
+    <string name="texto_sim">SIM</string>
+    <string name="texto_mensagem">Message</string>
+    <string name="texto_titulo">Título</string>
+
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="full_name"><b>%s | </b>%s</string>
+    <string name="preencha_email">Preencha com seu email ou cpf</string>
+    <string name="preencha_corretamente">Preencha com email válido</string>
+    <string name="preencha_cpf_corretamente">Preencha com CPF válido</string>
+    <string name="preencha_senha">Qual é sua senha?</string>
 </resources>

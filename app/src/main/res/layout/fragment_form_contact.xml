@@ -4,9 +4,17 @@
     xmlns:tools="http://schemas.android.com/tools"
     tools:context=".ui.form.ContactFormFragment">
 
-    <!-- Nome e Sobrenome, Empresa, email, telefone, site, adicionar conta    -->
-
     <data>
+
+        <import type="com.seletivo.promobit.enums.Status" />
+
+        <variable
+            name="status"
+            type="com.seletivo.promobit.enums.Status" />
+
+        <variable
+            name="resource"
+            type="com.seletivo.promobit.gateway.resource.Resource" />
 
         <variable
             name="contacts"
@@ -208,10 +216,11 @@
                 android:layout_marginEnd="4dp"
                 android:layout_marginRight="4dp"
                 android:layout_marginBottom="10dp"
-                android:enabled="true"
                 android:background="@drawable/bg_btn_cancel_drawable"
-                android:text="Cancelar"
+                android:enabled="true"
+                android:text="@string/label_cancelar"
                 android:textColor="@color/solid_btn_color"
+                app:enableDisableButtonCancel="@{resource.status != Status.LOADING}"
                 app:layout_constraintBottom_toBottomOf="parent" />
 
             <androidx.appcompat.widget.AppCompatButton
@@ -225,11 +234,12 @@
                 android:layout_marginRight="16dp"
                 android:layout_marginBottom="10dp"
                 android:background="@drawable/bg_btn_drawable"
-                android:text="Salvar"
+                android:text="@string/label_salvar"
                 android:textColor="@color/white"
                 android:visibility="visible"
                 app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent" />
+                app:layout_constraintEnd_toEndOf="parent"
+                app:visibleGone="@{resource.status != Status.LOADING}" />
 
             <ProgressBar
                 android:id="@+id/progressBarSaveId"
@@ -239,9 +249,10 @@
                 android:layout_marginLeft="4dp"
                 android:layout_marginTop="5dp"
                 android:layout_marginEnd="16dp"
-                android:visibility="gone"
                 android:layout_marginRight="16dp"
-                android:layout_marginBottom="10dp" />
+                android:layout_marginBottom="10dp"
+                android:visibility="gone"
+                app:visibleGone="@{resource.status == Status.LOADING}" />
 
         </com.google.android.flexbox.FlexboxLayout>
 

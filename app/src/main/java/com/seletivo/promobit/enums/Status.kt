@@ -1,4 +1,4 @@
-package com.seletivo.promobit.enum
+package com.seletivo.promobit.enums
 
 enum class Status {
     SUCCESS,
