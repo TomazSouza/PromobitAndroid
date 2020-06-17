@@ -2,6 +2,7 @@ package com.seletivo.promobit.ui.home
 
 import android.os.Bundle
 import android.view.LayoutInflater
+import android.view.MenuItem
 import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingComponent
@@ -17,6 +18,7 @@ import com.seletivo.promobit.adapter.ListContactsAdapter
 import com.seletivo.promobit.binding.FragmentDataBindingComponent
 import com.seletivo.promobit.databinding.FragmentHomeBinding
 import com.seletivo.promobit.di.annotation.Injectable
+import com.seletivo.promobit.enums.OrderBy
 import com.seletivo.promobit.util.async.AppExecutors
 import com.seletivo.promobit.util.autoCleared
 import javax.inject.Inject
@@ -34,6 +36,20 @@ class HomeFragment : Fragment(), Injectable {
     var mDataBindingComponent: DataBindingComponent = FragmentDataBindingComponent(this)
     var mBinding by autoCleared<FragmentHomeBinding>()
     private var mAdapter by autoCleared<ListContactsAdapter>()
+
+    private fun initRecycler() {
+        mHomeViewModel.results.observe(viewLifecycleOwner, Observer {
+            if (it.data != null && it.data.isNotEmpty()) {
+                mAdapter.submitList(it.data)
+            }
+        })
+    }
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+
+        setHasOptionsMenu(true)
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -65,12 +81,26 @@ class HomeFragment : Fragment(), Injectable {
         mAdapter = ListContactsAdapter(mDataBindingComponent, appExecutors)
         mBinding.recyclerView.adapter = mAdapter
 
-        mHomeViewModel.getAllContacts().observe(viewLifecycleOwner, Observer {
-            if (it.data != null && it.data.isNotEmpty()) {
-                mAdapter.submitList(it.data)
-            }
-        })
+        mHomeViewModel.query(OrderBy.NAME_ASC)
+        initRecycler()
+    }
 
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        if (item.itemId == R.id.action_company_asc) {
+            mHomeViewModel.query(OrderBy.COMPANY_ASC)
+            return true
+        } else if (item.itemId == R.id.action_company_desc) {
+            mHomeViewModel.query(OrderBy.COMPANY_DESC)
+            return true
+        } else if (item.itemId == R.id.action_name_desc) {
+            mHomeViewModel.query(OrderBy.NAME_DESC)
+            return true
+        } else if (item.itemId == R.id.action_name_asc) {
+            mHomeViewModel.query(OrderBy.NAME_ASC)
+            return true
+        }
+
+        return super.onOptionsItemSelected(item)
     }
 
 }

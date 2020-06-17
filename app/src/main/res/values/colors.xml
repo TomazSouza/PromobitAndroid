@@ -8,4 +8,9 @@
     <color name="stroke_btn_color">#00baff</color>
     <color name="solid_btn_color">#00baff</color>
     <color name="white">#FFF</color>
+
+    <color name="item_title">#005677</color>
+    <color name="item_subtitle">#8a000000</color>
+    <color name="item_new">#00baff</color>
+    <color name="background_item">#ededed</color>
 </resources>

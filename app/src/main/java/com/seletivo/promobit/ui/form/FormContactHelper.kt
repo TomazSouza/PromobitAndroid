@@ -11,99 +11,161 @@ import com.seletivo.promobit.R
 import com.seletivo.promobit.db.ContactObservable
 
 import org.apache.commons.lang.StringUtils
-import java.util.regex.Matcher
-import java.util.regex.Pattern
 
 class FormContactHelper(private val itemView: View?) : TextWatcher {
 
-    private val mEditPassword = itemView?.findViewById<TextInputEditText>(R.id.editFieldNameId)
-    private val mEditUser = itemView?.findViewById<TextInputEditText>(R.id.editFieldEmailId)
-    private val mBtnLogin = itemView?.findViewById<AppCompatButton>(R.id.btnSaveContactId)
+    private val editFieldNameId = itemView?.findViewById<TextInputEditText>(R.id.editFieldNameId)
+    private val textInputLayNameId =
+        itemView?.findViewById<TextInputLayout>(R.id.textInputLayNameId)
 
-    private val textInputLayoutPassword = itemView?.findViewById<TextInputLayout>(R.id.textInputLayNameId)
-    private val textInputLayoutEmail = itemView?.findViewById<TextInputLayout>(R.id.textInputLayEmailId)
+    private val editFieldCompanyId =
+        itemView?.findViewById<TextInputEditText>(R.id.editFieldCompanyId)
+    private val textInputLayCompanyId =
+        itemView?.findViewById<TextInputLayout>(R.id.textInputLayCompanyId)
+
+    private val editFieldEmailId = itemView?.findViewById<TextInputEditText>(R.id.editFieldEmailId)
+    private val textInputLayEmailId =
+        itemView?.findViewById<TextInputLayout>(R.id.textInputLayEmailId)
+
+    private val editFieldPhoneId = itemView?.findViewById<TextInputEditText>(R.id.editFieldPhoneId)
+    private val textInputLayPhoneId =
+        itemView?.findViewById<TextInputLayout>(R.id.textInputLayPhoneId)
+
+    private val editFieldSiteId = itemView?.findViewById<TextInputEditText>(R.id.editFieldSiteId)
+    private val textInputLaySiteId =
+        itemView?.findViewById<TextInputLayout>(R.id.textInputLaySiteId)
+
+    private val editFieldCustomNoteId =
+        itemView?.findViewById<TextInputEditText>(R.id.editFieldCustomNoteId)
+    private val textInputLayCustomNoteId =
+        itemView?.findViewById<TextInputLayout>(R.id.textInputLayCustomNoteId)
+
+
+    private val btnSaveContactId = itemView?.findViewById<AppCompatButton>(R.id.btnSaveContactId)
 
     init {
-        mEditUser?.addTextChangedListener(this)
-        mEditPassword?.addTextChangedListener(this)
+        editFieldNameId?.addTextChangedListener(this)
+        editFieldEmailId?.addTextChangedListener(this)
+        editFieldCompanyId?.addTextChangedListener(this)
+        editFieldPhoneId?.addTextChangedListener(this)
+        editFieldSiteId?.addTextChangedListener(this)
+        editFieldCustomNoteId?.addTextChangedListener(this)
     }
 
     override fun afterTextChanged(s: Editable?) {}
     override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {}
     override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
-        if (validateUser() && validatePassword()) {
-            mBtnLogin?.isEnabled = true
-            textInputLayoutEmail?.isErrorEnabled = false
-            textInputLayoutPassword?.isErrorEnabled = false
-        } else {
-            mBtnLogin?.isEnabled = false
+        btnSaveContactId?.isEnabled = (validateName() && validateCompany() &&
+                validateEmail() && validatePhone()
+                && validateSite() && validateCustomNote())
+
+        if (validateName()) {
+            textInputLayNameId?.isErrorEnabled = false
+        }
+        if (validateCompany()) {
+            textInputLayCompanyId?.isErrorEnabled = false
+        }
+        if (validateEmail()) {
+            textInputLayEmailId?.isErrorEnabled = false
+        }
+        if (validatePhone()) {
+            textInputLayPhoneId?.isErrorEnabled = false
+        }
+        if (validateSite()) {
+            textInputLaySiteId?.isErrorEnabled = false
+        }
+        if (validateCustomNote()) {
+            textInputLayCustomNoteId?.isErrorEnabled = false
         }
     }
 
-    private fun validateUser(): Boolean {
+    private fun errorDisableTextInputLayout() {
+        textInputLayEmailId?.isErrorEnabled = false
+        textInputLayNameId?.isErrorEnabled = false
+        textInputLayCompanyId?.isErrorEnabled = false
+        textInputLayPhoneId?.isErrorEnabled = false
+        textInputLaySiteId?.isErrorEnabled = false
+        textInputLayCustomNoteId?.isErrorEnabled = false
+    }
 
-        val fieldUser = mEditUser?.text.toString().trim()
+    private fun validateEmail(): Boolean {
+
+        val fieldUser = editFieldEmailId?.text.toString().trim()
 
         if (StringUtils.isEmpty(fieldUser)) {
-            textInputLayoutPassword?.isErrorEnabled = false
-
-            textInputLayoutEmail?.error = itemView?.context?.getString(R.string.preencha_email)
-            textInputLayoutEmail?.isErrorEnabled = true
+            textInputLayEmailId?.error = itemView?.context?.getString(R.string.is_empty_email)
+            textInputLayEmailId?.isErrorEnabled = true
             return false
         }
 
-        if (fieldUser.contains("@") && !Patterns.EMAIL_ADDRESS.matcher(fieldUser).matches()) {
-            textInputLayoutPassword?.isErrorEnabled = false
-
-            textInputLayoutEmail?.error =
+        if (!Patterns.EMAIL_ADDRESS.matcher(fieldUser).matches()) {
+            textInputLayEmailId?.error =
                 itemView?.context?.getString(R.string.preencha_corretamente)
-            textInputLayoutEmail?.isErrorEnabled = true
+            textInputLayEmailId?.isErrorEnabled = true
             return false
         }
-
-        if (!fieldUser.contains("@")) {
-            textInputLayoutPassword?.isErrorEnabled = false
-
-            val pattern: Pattern = Pattern.compile("[^0-9]")
-            val matcher: Matcher = pattern.matcher(fieldUser)
-            val number: String = matcher.replaceAll("")
-
-            if (!false) {
-                textInputLayoutEmail?.error =
-                    itemView?.context?.getString(R.string.preencha_cpf_corretamente)
-                textInputLayoutEmail?.isErrorEnabled = true
-                return false
-            }
-
-            return true
-        }
-
-        textInputLayoutEmail?.isErrorEnabled = false
 
         return true
     }
 
-    private fun validatePassword(): Boolean {
+    private fun validateName(): Boolean {
+        val fieldName = editFieldNameId?.text.toString().trim()
 
-        val fieldPassword = mEditPassword?.text.toString().trim()
-
-        if (StringUtils.isEmpty(fieldPassword)) {
-            textInputLayoutEmail?.isErrorEnabled = false
-
-            textInputLayoutPassword?.error = itemView?.context?.getString(R.string.preencha_senha)
-            textInputLayoutPassword?.isErrorEnabled = true
+        if (StringUtils.isEmpty(fieldName) || fieldName.length < 6) {
+            textInputLayNameId?.error = itemView?.context?.getString(R.string.is_empty_name)
+            textInputLayNameId?.isErrorEnabled = true
             return false
         }
 
-        if (!"ValidatePassword".isBlank()) {
-            textInputLayoutEmail?.isErrorEnabled = false
+        return true
+    }
 
-            textInputLayoutPassword?.error = itemView?.context?.getString(R.string.regras_senha)
-            textInputLayoutPassword?.isErrorEnabled = true
+    private fun validateCompany(): Boolean {
+        val fieldCompany = editFieldCompanyId?.text.toString().trim()
+
+        if (StringUtils.isEmpty(fieldCompany) || fieldCompany.length < 4) {
+            textInputLayCompanyId?.error = itemView?.context?.getString(R.string.is_empty_company)
+            textInputLayCompanyId?.isErrorEnabled = true
             return false
         }
 
-        textInputLayoutPassword?.isErrorEnabled = false
+        return true
+    }
+
+    private fun validateCustomNote(): Boolean {
+        val fieldCustomNote = editFieldCustomNoteId?.text.toString().trim()
+
+        if (StringUtils.isEmpty(fieldCustomNote)) {
+            textInputLayCustomNoteId?.error =
+                itemView?.context?.getString(R.string.is_empty_custom_note)
+            textInputLayCustomNoteId?.isErrorEnabled = true
+            return false
+        }
+
+        return true
+    }
+
+    private fun validatePhone(): Boolean {
+        val fieldPhone = editFieldPhoneId?.text.toString().trim()
+
+        if (StringUtils.isEmpty(fieldPhone)) {
+            textInputLayPhoneId?.error = itemView?.context?.getString(R.string.is_empty_phone)
+            textInputLayPhoneId?.isErrorEnabled = true
+            return false
+        }
+
+        return true
+    }
+
+    private fun validateSite(): Boolean {
+
+        val fieldSite = editFieldSiteId?.text.toString().trim()
+
+        if (StringUtils.isEmpty(fieldSite) || fieldSite.length < 6) {
+            textInputLaySiteId?.error = itemView?.context?.getString(R.string.is_empty_site)
+            textInputLaySiteId?.isErrorEnabled = true
+            return false
+        }
         return true
     }
 

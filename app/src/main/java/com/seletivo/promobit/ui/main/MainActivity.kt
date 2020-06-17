@@ -35,7 +35,6 @@ class MainActivity : AppCompatActivity(), HasSupportFragmentInjector {
         val navView: NavigationView = findViewById(R.id.nav_view)
         val navController = findNavController(R.id.nav_host_fragment)
 
-
         appBarConfiguration = AppBarConfiguration(setOf(R.id.nav_home), drawerLayout)
 
         setupActionBarWithNavController(navController, appBarConfiguration)

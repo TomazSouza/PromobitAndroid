@@ -5,7 +5,11 @@
     <string name="nav_header_title">Example User</string>
     <string name="nav_header_subtitle">example@email.com</string>
     <string name="nav_header_desc">Navigation header</string>
-    <string name="action_settings">Settings</string>
+
+    <string name="action_company_order_a_z">Empresa A-Z</string>
+    <string name="action_company_order_z_a">Empresa Z-A</string>
+    <string name="action_name_a_z">Nome A-Z</string>
+    <string name="action_name_z_a">Nome Z-A</string>
 
     <string name="menu_home">Meus Contatos</string>
     <string name="menu_gallery">Adicionar Contatos</string>
@@ -31,8 +35,16 @@
 
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="full_name"><b>%s | </b>%s</string>
-    <string name="preencha_email">Preencha com seu email ou cpf</string>
     <string name="preencha_corretamente">Preencha com email válido</string>
     <string name="preencha_cpf_corretamente">Preencha com CPF válido</string>
+
+    <string name="is_empty_email">Qual é o email?</string>
     <string name="preencha_senha">Qual é sua senha?</string>
+    <string name="is_empty_site">Qual é o site?</string>
+    <string name="is_empty_phone">Qual é o telefone?</string>
+    <string name="is_empty_custom_note">Insira uma nota</string>
+    <string name="is_empty_company">Qual é a empresa?</string>
+    <string name="is_empty_name">Qual é o nome?</string>
+    <string name="item_points">⋮</string>
+    <string name="label_new">NOVO</string>
 </resources>

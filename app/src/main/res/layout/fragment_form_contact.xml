@@ -236,6 +236,7 @@
                 android:background="@drawable/bg_btn_drawable"
                 android:text="@string/label_salvar"
                 android:textColor="@color/white"
+                android:enabled="false"
                 android:visibility="visible"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"

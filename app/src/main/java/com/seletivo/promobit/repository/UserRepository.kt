@@ -2,6 +2,7 @@ package com.seletivo.promobit.repository
 
 import androidx.lifecycle.*
 import com.seletivo.promobit.db.ContactObservable
+import com.seletivo.promobit.enums.OrderBy
 import com.seletivo.promobit.gateway.WebService
 import com.seletivo.promobit.gateway.database.ContactDb
 import com.seletivo.promobit.gateway.database.dao.ContactDao
@@ -41,11 +42,11 @@ class UserRepository @Inject constructor(
             }
 
             override fun loadFromDb(): LiveData<MutableList<ContactEntity>> {
-                return contactDao.getAllContacts().switchMap {
+                return contactDao.getAllContactsOrderByNameAsc().switchMap {
                     if (it == null || it.isEmpty()) {
                         AbsentLiveData.create()
                     } else {
-                        contactDao.getAllContacts()
+                        contactDao.getAllContactsOrderByNameAsc()
                     }
                 }
             }
@@ -60,6 +61,40 @@ class UserRepository @Inject constructor(
         }.asLiveData()
     }
 
+
+    fun getAllContactsOrderBy(orderBy: OrderBy): LiveData<Resource<MutableList<ContactEntity>>> {
+        return object :
+            NetworkBoundResource<MutableList<ContactEntity>, BaseResponse>(appExecutors) {
+            override fun saveCallResult(item: BaseResponse) {
+                contactDb.runInTransaction {
+                    contactDao.insertContact(item.contactList!!)
+                }
+            }
+
+            override fun shouldFetch(data: MutableList<ContactEntity>?): Boolean {
+                return data == null || data.isEmpty()
+            }
+
+            override fun loadFromDb(): LiveData<MutableList<ContactEntity>> {
+
+                return contactDao.getOrderWith(orderBy).switchMap {
+                    if (it == null || it.isEmpty()) {
+                        AbsentLiveData.create()
+                    } else {
+                        contactDao.getOrderWith(orderBy)
+                    }
+                }
+            }
+
+            override fun createCall(): LiveData<ApiResponse<BaseResponse>> {
+                return webService.getAllContacts()
+            }
+
+            override fun processResponse(response: ApiSuccessResponse<BaseResponse>): BaseResponse {
+                return response.body
+            }
+        }.asLiveData()
+    }
 
     fun saveContact(observer: Observer<Resource<Int>>, contactObservable: ContactObservable) {
         val fetchSave = FetchSaveContact(webService, contactObservable)

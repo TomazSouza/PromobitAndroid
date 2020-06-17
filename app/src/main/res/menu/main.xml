@@ -1,9 +1,43 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
+
+
     <item
-        android:id="@+id/action_settings"
-        android:orderInCategory="100"
-        android:title="@string/action_settings"
-        app:showAsAction="never" />
+        android:id="@+id/order_company"
+        android:title="Empresa">
+        <!-- "file" submenu -->
+        <menu>
+            <item
+                android:id="@+id/action_company_asc"
+                android:orderInCategory="100"
+                android:title="@string/action_company_order_a_z"
+                app:showAsAction="never" />
+
+            <item
+                android:id="@+id/action_company_desc"
+                android:orderInCategory="100"
+                android:title="@string/action_company_order_z_a"
+                app:showAsAction="never" />
+        </menu>
+    </item>
+
+    <item
+        android:id="@+id/order_name"
+        android:title="Nome">
+        <!-- "file" submenu -->
+        <menu>
+            <item
+                android:id="@+id/action_name_asc"
+                android:orderInCategory="100"
+                android:title="@string/action_name_a_z"
+                app:showAsAction="never" />
+
+            <item
+                android:id="@+id/action_name_desc"
+                android:orderInCategory="100"
+                android:title="@string/action_name_z_a"
+                app:showAsAction="never" />
+        </menu>
+    </item>
 </menu>

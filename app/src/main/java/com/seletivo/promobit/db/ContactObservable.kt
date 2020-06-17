@@ -9,7 +9,7 @@ open class ContactObservable : BaseObservable() {
 
     @field:SerializedName("name")
     @get:Bindable
-    var name: String? = "João Carlos"
+    var name: String? = ""
         set(value) {
             field = value
             notifyPropertyChanged(BR.name)
@@ -17,7 +17,7 @@ open class ContactObservable : BaseObservable() {
 
     @field:SerializedName("company")
     @get:Bindable
-    var company: String? = "Microsoft"
+    var company: String? = ""
         set(value) {
             field = value
             notifyPropertyChanged(BR.company)
@@ -25,7 +25,7 @@ open class ContactObservable : BaseObservable() {
 
     @field:SerializedName("email")
     @get:Bindable
-    var email: String? = "joao_carlos20@hotmail.com"
+    var email: String? = ""
         set(value) {
             field = value
             notifyPropertyChanged(BR.email)
@@ -33,7 +33,7 @@ open class ContactObservable : BaseObservable() {
 
     @field:SerializedName("phone")
     @get:Bindable
-    var phone: String? = "11955552314"
+    var phone: String? = ""
         set(value) {
             field = value
             notifyPropertyChanged(BR.phone)
@@ -41,7 +41,7 @@ open class ContactObservable : BaseObservable() {
 
     @field:SerializedName("website")
     @get:Bindable
-    var website: String? = "www.mywebsite.com.br"
+    var website: String? = ""
         set(value) {
             field = value
             notifyPropertyChanged(BR.website)
@@ -49,7 +49,7 @@ open class ContactObservable : BaseObservable() {
 
     @field:SerializedName("custom_note")
     @get:Bindable
-    var customNote: String? = "Tudo pela Microsoft"
+    var customNote: String? = ""
         set(value) {
             field = value
             notifyPropertyChanged(BR.customNote)

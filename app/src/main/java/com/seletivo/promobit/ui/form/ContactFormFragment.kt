@@ -64,6 +64,7 @@ class ContactFormFragment : Fragment(), Injectable {
         )
 
         binding.contacts = mContactObservable
+        FormContactHelper(binding.root)
 
         binding.root.findViewById<AppCompatButton>(R.id.btnCancelId).setOnClickListener {
             dismissKeyboard(binding.root.windowToken)
@@ -79,7 +80,7 @@ class ContactFormFragment : Fragment(), Injectable {
 
         return binding.root
     }
-    
+
     private fun dismissKeyboard(windowToken: IBinder) {
         val imm = activity?.getSystemService(Context.INPUT_METHOD_SERVICE) as? InputMethodManager
         imm?.hideSoftInputFromWindow(windowToken, 0)
