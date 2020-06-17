@@ -8,6 +8,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.view.inputmethod.InputMethodManager
 import androidx.appcompat.widget.AppCompatButton
+import androidx.core.content.ContextCompat
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
@@ -61,6 +62,7 @@ class ContactFormFragment : Fragment(), Injectable {
 
         salvar.setOnClickListener {
             dismissKeyboard(binding.root.windowToken)
+            showProgress(true, binding)
             mContactViewModel.setContact(mContactObservable)
         }
 
@@ -68,11 +70,46 @@ class ContactFormFragment : Fragment(), Injectable {
             Timber.w("contactSavedLiveData: $it")
             if (it.status == Status.SUCCESS) {
                 dismissKeyboard(binding.root.windowToken)
+                showProgress(false, binding)
                 findNavController().navigate(R.id.nav_home)
+            } else if (it.status == Status.ERROR) {
+                showProgress(false, binding)
             }
         })
 
         return binding.root
+    }
+
+    private fun showProgress(show: Boolean, binding: FragmentFormContactBinding) {
+        if (show) {
+            binding.progressBarSaveId.visibility = View.VISIBLE
+            binding.btnSaveContactId.visibility = View.GONE
+            activity.let { ac ->
+                if (ac != null) {
+                    binding.btnCancelId.setTextColor(
+                        ContextCompat.getColor(
+                            ac,
+                            R.color.white
+                        )
+                    )
+                }
+            }
+            binding.btnCancelId.isEnabled = false
+        } else {
+            binding.progressBarSaveId.visibility = View.GONE
+            binding.btnSaveContactId.visibility = View.VISIBLE
+            activity.let { ac ->
+                if (ac != null) {
+                    binding.btnCancelId.setTextColor(
+                        ContextCompat.getColor(
+                            ac,
+                            R.color.colorPrimary
+                        )
+                    )
+                }
+            }
+            binding.btnCancelId.isEnabled = true
+        }
     }
 
     private fun dismissKeyboard(windowToken: IBinder) {
