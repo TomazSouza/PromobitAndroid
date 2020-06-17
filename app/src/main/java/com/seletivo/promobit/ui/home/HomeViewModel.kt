@@ -13,10 +13,7 @@ import javax.inject.Inject
 
 class HomeViewModel @Inject constructor(private val userRepository: UserRepository) : ViewModel() {
 
-    var updatedList: LiveData<Resource<MutableList<ContactEntity>>>? = null
-
     private val _query = MutableLiveData<OrderBy>()
-
 
     val results: LiveData<Resource<MutableList<ContactEntity>>> = _query.switchMap { search ->
         if (search == null) {
@@ -26,13 +23,8 @@ class HomeViewModel @Inject constructor(private val userRepository: UserReposito
         }
     }
 
-    fun getAllContacts(orderBy: OrderBy): LiveData<Resource<MutableList<ContactEntity>>> {
-        return userRepository.getAllContactsOrderBy(orderBy)
-    }
-
     fun query(orderBy: OrderBy) {
         _query.value = orderBy
     }
-
 
 }

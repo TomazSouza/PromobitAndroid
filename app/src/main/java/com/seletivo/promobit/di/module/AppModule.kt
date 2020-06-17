@@ -3,11 +3,10 @@ package com.seletivo.promobit.di.module
 import android.app.Application
 import androidx.room.Room
 import com.seletivo.promobit.BuildConfig
-import com.seletivo.promobit.db.ContactObservable
+import com.seletivo.promobit.ui.form.ContactObservable
 import com.seletivo.promobit.gateway.WebService
 import com.seletivo.promobit.gateway.database.ContactDb
 import com.seletivo.promobit.gateway.database.dao.ContactDao
-import com.seletivo.promobit.util.livedata.LiveDataCallAdapter
 import com.seletivo.promobit.util.livedata.LiveDataCallAdapterFactory
 import dagger.Module
 import dagger.Provides

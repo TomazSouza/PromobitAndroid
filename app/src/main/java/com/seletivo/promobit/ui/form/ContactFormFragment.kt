@@ -8,7 +8,6 @@ import android.view.View
 import android.view.ViewGroup
 import android.view.inputmethod.InputMethodManager
 import androidx.appcompat.widget.AppCompatButton
-import androidx.databinding.BindingAdapter
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
@@ -17,7 +16,6 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import com.seletivo.promobit.R
 import com.seletivo.promobit.databinding.FragmentFormContactBinding
-import com.seletivo.promobit.db.ContactObservable
 import com.seletivo.promobit.di.annotation.Injectable
 import com.seletivo.promobit.enums.Status
 import com.seletivo.promobit.util.async.AppExecutors

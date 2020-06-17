@@ -1,7 +1,7 @@
 package com.seletivo.promobit.repository
 
 import androidx.lifecycle.*
-import com.seletivo.promobit.db.ContactObservable
+import com.seletivo.promobit.ui.form.ContactObservable
 import com.seletivo.promobit.enums.OrderBy
 import com.seletivo.promobit.gateway.WebService
 import com.seletivo.promobit.gateway.database.ContactDb

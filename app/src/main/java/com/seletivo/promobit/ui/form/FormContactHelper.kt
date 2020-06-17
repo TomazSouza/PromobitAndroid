@@ -8,7 +8,6 @@ import androidx.appcompat.widget.AppCompatButton
 import com.google.android.material.textfield.TextInputEditText
 import com.google.android.material.textfield.TextInputLayout
 import com.seletivo.promobit.R
-import com.seletivo.promobit.db.ContactObservable
 
 import org.apache.commons.lang.StringUtils
 
@@ -39,7 +38,6 @@ class FormContactHelper(private val itemView: View?) : TextWatcher {
         itemView?.findViewById<TextInputEditText>(R.id.editFieldCustomNoteId)
     private val textInputLayCustomNoteId =
         itemView?.findViewById<TextInputLayout>(R.id.textInputLayCustomNoteId)
-
 
     private val btnSaveContactId = itemView?.findViewById<AppCompatButton>(R.id.btnSaveContactId)
 
@@ -77,15 +75,6 @@ class FormContactHelper(private val itemView: View?) : TextWatcher {
         if (validateCustomNote()) {
             textInputLayCustomNoteId?.isErrorEnabled = false
         }
-    }
-
-    private fun errorDisableTextInputLayout() {
-        textInputLayEmailId?.isErrorEnabled = false
-        textInputLayNameId?.isErrorEnabled = false
-        textInputLayCompanyId?.isErrorEnabled = false
-        textInputLayPhoneId?.isErrorEnabled = false
-        textInputLaySiteId?.isErrorEnabled = false
-        textInputLayCustomNoteId?.isErrorEnabled = false
     }
 
     private fun validateEmail(): Boolean {
@@ -167,10 +156,6 @@ class FormContactHelper(private val itemView: View?) : TextWatcher {
             return false
         }
         return true
-    }
-
-    fun getUser(): ContactObservable {
-        return ContactObservable()
     }
 
 }

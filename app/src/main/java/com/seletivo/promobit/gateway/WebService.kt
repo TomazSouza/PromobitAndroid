@@ -1,7 +1,7 @@
 package com.seletivo.promobit.gateway
 
 import androidx.lifecycle.LiveData
-import com.seletivo.promobit.db.ContactObservable
+import com.seletivo.promobit.ui.form.ContactObservable
 import com.seletivo.promobit.gateway.resource.ApiResponse
 import com.seletivo.promobit.gateway.vo.BaseResponse
 import com.seletivo.promobit.gateway.vo.SavedResponse

@@ -2,7 +2,7 @@ package com.seletivo.promobit.repository
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
-import com.seletivo.promobit.db.ContactObservable
+import com.seletivo.promobit.ui.form.ContactObservable
 import com.seletivo.promobit.gateway.WebService
 import com.seletivo.promobit.gateway.resource.*
 import timber.log.Timber

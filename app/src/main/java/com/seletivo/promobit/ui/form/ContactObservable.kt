@@ -1,4 +1,4 @@
-package com.seletivo.promobit.db
+package com.seletivo.promobit.ui.form
 
 import androidx.databinding.BaseObservable
 import androidx.databinding.Bindable

@@ -18,7 +18,7 @@
 
         <variable
             name="contacts"
-            type="com.seletivo.promobit.db.ContactObservable" />
+            type="com.seletivo.promobit.ui.form.ContactObservable" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
