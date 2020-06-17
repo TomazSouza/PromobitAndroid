@@ -1,10 +1,8 @@
 package com.seletivo.promobit.repository
 
-import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.ViewModel
-import androidx.lifecycle.switchMap
+import androidx.lifecycle.*
 import com.seletivo.promobit.db.ContactObservable
+import com.seletivo.promobit.enum.Status
 import com.seletivo.promobit.gateway.WebService
 import com.seletivo.promobit.gateway.database.ContactDb
 import com.seletivo.promobit.gateway.database.dao.ContactDao
@@ -16,6 +14,7 @@ import com.seletivo.promobit.gateway.resource.Resource
 import com.seletivo.promobit.gateway.vo.BaseResponse
 import com.seletivo.promobit.util.async.AppExecutors
 import com.seletivo.promobit.util.livedata.AbsentLiveData
+import timber.log.Timber
 import javax.inject.Inject
 import javax.inject.Singleton
 
@@ -26,6 +25,9 @@ class UserRepository @Inject constructor(
     private val contactDb: ContactDb,
     private val contactDao: ContactDao
 ) : ViewModel() {
+
+    private var contactSavedLiveData: LiveData<Resource<Int>>? = null
+    var contactSaved: MutableLiveData<Resource<Int>> = MutableLiveData()
 
     fun getAllContacts(): LiveData<Resource<MutableList<ContactEntity>>> {
         return object :
@@ -42,7 +44,7 @@ class UserRepository @Inject constructor(
 
             override fun loadFromDb(): LiveData<MutableList<ContactEntity>> {
                 return contactDao.getAllContacts().switchMap {
-                    if (it == null) {
+                    if (it == null || it.isEmpty()) {
                         AbsentLiveData.create()
                     } else {
                         contactDao.getAllContacts()
@@ -60,10 +62,13 @@ class UserRepository @Inject constructor(
         }.asLiveData()
     }
 
-    fun saveContact(contactObservable: ContactObservable): LiveData<Resource<Int>> {
+
+    fun saveContact(observer: Observer<Resource<Int>>, contactObservable: ContactObservable) {
         val fetchSave = FetchSaveContact(webService, contactObservable)
         appExecutors.networkIO().execute(fetchSave)
-        return fetchSave.liveData
+        contactSavedLiveData = fetchSave.liveData
+        contactSavedLiveData?.observeForever(observer)
     }
+
 
 }

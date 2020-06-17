@@ -24,10 +24,10 @@ class FetchSaveContact(
                 _liveData.postValue(Resource.success(apiResponse.body.idContact))
             }
             is ApiEmptyResponse -> {
-                Timber.e("ApiEmptyResponse")
+                _liveData.postValue(Resource.error("failure request data response is empty", null))
             }
             is ApiErrorResponse -> {
-              Timber.e("ApiErrorResponse")
+                _liveData.postValue(Resource.error(apiResponse.errorMessage, null))
             }
         }
     }
