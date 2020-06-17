@@ -3,6 +3,7 @@ package com.seletivo.promobit.di.module
 import android.app.Application
 import androidx.room.Room
 import com.seletivo.promobit.BuildConfig
+import com.seletivo.promobit.db.ContactObservable
 import com.seletivo.promobit.gateway.WebService
 import com.seletivo.promobit.gateway.database.ContactDb
 import com.seletivo.promobit.gateway.database.dao.ContactDao
@@ -40,6 +41,11 @@ class AppModule {
             .client(client)
             .build().create(WebService::class.java)
 
+    }
+
+    @Provides
+    fun provideContactObservable(): ContactObservable {
+        return ContactObservable()
     }
 
     @Singleton

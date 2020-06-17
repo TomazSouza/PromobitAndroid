@@ -1,8 +1,10 @@
 package com.seletivo.promobit.repository
 
 import androidx.lifecycle.LiveData
+import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.switchMap
+import com.seletivo.promobit.db.ContactObservable
 import com.seletivo.promobit.gateway.WebService
 import com.seletivo.promobit.gateway.database.ContactDb
 import com.seletivo.promobit.gateway.database.dao.ContactDao
@@ -26,7 +28,8 @@ class UserRepository @Inject constructor(
 ) : ViewModel() {
 
     fun getAllContacts(): LiveData<Resource<MutableList<ContactEntity>>> {
-        return object : NetworkBoundResource<MutableList<ContactEntity>, BaseResponse>(appExecutors) {
+        return object :
+            NetworkBoundResource<MutableList<ContactEntity>, BaseResponse>(appExecutors) {
             override fun saveCallResult(item: BaseResponse) {
                 contactDb.runInTransaction {
                     contactDao.insertContact(item.contactList!!)
@@ -38,7 +41,7 @@ class UserRepository @Inject constructor(
             }
 
             override fun loadFromDb(): LiveData<MutableList<ContactEntity>> {
-               return contactDao.getAllContacts().switchMap {
+                return contactDao.getAllContacts().switchMap {
                     if (it == null) {
                         AbsentLiveData.create()
                     } else {
@@ -48,13 +51,19 @@ class UserRepository @Inject constructor(
             }
 
             override fun createCall(): LiveData<ApiResponse<BaseResponse>> {
-               return webService.getAllContacts()
+                return webService.getAllContacts()
             }
 
             override fun processResponse(response: ApiSuccessResponse<BaseResponse>): BaseResponse {
                 return response.body
             }
         }.asLiveData()
+    }
+
+    fun saveContact(contactObservable: ContactObservable): LiveData<Resource<Int>> {
+        val fetchSave = FetchSaveContact(webService, contactObservable)
+        appExecutors.networkIO().execute(fetchSave)
+        return fetchSave.liveData
     }
 
 }
