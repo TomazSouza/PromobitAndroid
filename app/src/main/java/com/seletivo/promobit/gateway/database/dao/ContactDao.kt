@@ -12,13 +12,7 @@ import com.seletivo.promobit.gateway.database.entity.ContactEntity
 abstract class ContactDao {
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    abstract fun insertContact(contactEntity:  MutableList<ContactEntity>)
-
-//    @Query("SELECT * FROM contactEntity ORDER BY name ASC")
-//    abstract fun getAllContactsOrderByName(): LiveData<MutableList<ContactEntity>>
-//
-//    @Query("SELECT * FROM contactEntity ORDER BY company ASC")
-//    abstract fun getAllContactsOrderByCompany(): LiveData<MutableList<ContactEntity>>
+    abstract fun insertContact(contactEntity: MutableList<ContactEntity>)
 
     @Query("SELECT * FROM contactEntity ORDER BY company ASC")
     abstract fun getAllContactsOrderByCompanyAsc(): LiveData<MutableList<ContactEntity>>

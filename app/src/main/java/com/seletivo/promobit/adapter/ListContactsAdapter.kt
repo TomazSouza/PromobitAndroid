@@ -40,6 +40,7 @@ class ListContactsAdapter(
     }
 
     override fun bind(binding: RecyclerContactItemBinding, item: ContactEntity) {
+
         binding.contactList = item
     }
 }

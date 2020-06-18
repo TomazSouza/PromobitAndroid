@@ -47,7 +47,7 @@
                 android:layout_marginRight="8dp"
                 app:flexDirection="column"
                 app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toStartOf="@+id/appCompatTextView"
+                app:layout_constraintEnd_toStartOf="@+id/textViewNewId"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent">
 
@@ -71,7 +71,7 @@
             </com.google.android.flexbox.FlexboxLayout>
 
             <androidx.appcompat.widget.AppCompatTextView
-                android:id="@+id/appCompatTextView"
+                android:id="@+id/textViewNewId"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="16dp"
@@ -81,6 +81,7 @@
                 android:textColor="@color/white"
                 android:textSize="12sp"
                 android:textStyle="bold"
+                app:visibleGone="@{contactList.newContact == true}"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toEndOf="@+id/flexBoxTexts"
