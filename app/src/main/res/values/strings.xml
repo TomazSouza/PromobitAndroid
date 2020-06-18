@@ -6,14 +6,13 @@
     <string name="nav_header_subtitle">example@email.com</string>
     <string name="nav_header_desc">Navigation header</string>
 
-    <string name="action_company_order_a_z">Empresa A-Z</string>
-    <string name="action_company_order_z_a">Empresa Z-A</string>
-    <string name="action_name_a_z">Nome A-Z</string>
-    <string name="action_name_z_a">Nome Z-A</string>
+    <string name="action_a_z">A-Z</string>
+    <string name="action_z_a">Z-A</string>
 
     <string name="menu_home">Meus Contatos</string>
     <string name="menu_gallery">Adicionar Contatos</string>
-    <string name="menu_slideshow">Cartões</string>
+    <string name="menu_cartao">Cartões</string>
+    <string name="menu_exit">Sair</string>
 
     <string name="label_nome_sobrenome">Nome e Sobrenome</string>
     <string name="label_empresa">Empresa</string>
@@ -48,4 +47,7 @@
     <string name="item_points">⋮</string>
     <string name="label_new">NOVO</string>
     <string name="contact_is_empty">Você ainda não possui contatos</string>
+    <string name="item_menu_name">Nome</string>
+    <string name="item_menu_company">Empresa</string>
+    <string name="label_exit">Sair</string>
 </resources>

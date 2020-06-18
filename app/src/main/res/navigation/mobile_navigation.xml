@@ -15,6 +15,6 @@
         android:id="@+id/nav_form_contact"
         android:name="com.seletivo.promobit.ui.form.FormFragment"
         android:label="@string/menu_gallery"
-        tools:layout="@layout/fragment_form_contact" />
+        tools:layout="@layout/fragment_form" />
 
 </navigation>

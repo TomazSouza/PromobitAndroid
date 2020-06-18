@@ -15,7 +15,7 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import com.seletivo.promobit.R
-import com.seletivo.promobit.databinding.FragmentFormContactBinding
+import com.seletivo.promobit.databinding.FragmentFormBinding
 import com.seletivo.promobit.di.annotation.Injectable
 import com.seletivo.promobit.enums.Status
 import javax.inject.Inject
@@ -30,7 +30,7 @@ class FormFragment : Fragment(), Injectable {
 
     private val formViewModel: FormViewModel by viewModels { mViewModelFactory }
 
-    private fun initStatusSaveContact(binding: FragmentFormContactBinding) {
+    private fun initStatusSaveContact(binding: FragmentFormBinding) {
         formViewModel.contactSavedLiveData.observe(viewLifecycleOwner, Observer {
 
             binding.resource = it
@@ -48,9 +48,9 @@ class FormFragment : Fragment(), Injectable {
         savedInstanceState: Bundle?
     ): View? {
 
-        val binding: FragmentFormContactBinding = DataBindingUtil.inflate(
+        val binding: FragmentFormBinding = DataBindingUtil.inflate(
             inflater,
-            R.layout.fragment_form_contact,
+            R.layout.fragment_form,
             container,
             false
         )
