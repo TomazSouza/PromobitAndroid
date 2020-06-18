@@ -29,7 +29,8 @@ object BindingAdapters {
             }
             false
         }
-
-
     }
+
+
+
 }

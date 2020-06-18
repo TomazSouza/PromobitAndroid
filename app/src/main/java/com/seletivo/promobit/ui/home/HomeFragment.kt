@@ -33,13 +33,16 @@ class HomeFragment : Fragment(), Injectable {
 
     private val mHomeViewModel: HomeViewModel by viewModels { mViewModelFactory }
 
-    var mDataBindingComponent: DataBindingComponent = FragmentDataBindingComponent(this)
-    var mBinding by autoCleared<FragmentHomeBinding>()
+    private var mDataBindingComponent: DataBindingComponent = FragmentDataBindingComponent(this)
+
+    private var mBinding by autoCleared<FragmentHomeBinding>()
+
     private var mAdapter by autoCleared<ListContactsAdapter>()
 
     private fun initRecycler() {
         mHomeViewModel.results.observe(viewLifecycleOwner, Observer {
             if (it.data != null && it.data.isNotEmpty()) {
+                mBinding.resource = it
                 mAdapter.submitList(it.data)
             }
         })
@@ -47,7 +50,6 @@ class HomeFragment : Fragment(), Injectable {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
         setHasOptionsMenu(true)
     }
 

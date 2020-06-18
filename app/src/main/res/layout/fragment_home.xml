@@ -4,9 +4,64 @@
     xmlns:tools="http://schemas.android.com/tools"
     tools:context=".ui.home.HomeFragment">
 
+    <data>
+        <import type="com.seletivo.promobit.enums.Status" />
+
+        <variable
+            name="status"
+            type="com.seletivo.promobit.enums.Status" />
+
+        <variable
+            name="resource"
+            type="com.seletivo.promobit.gateway.resource.Resource" />
+    </data>
+
     <androidx.coordinatorlayout.widget.CoordinatorLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/constraintLayIsEmpty"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:visibleGone="@{resource.status != Status.SUCCESS}"
+            android:visibility="visible">
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/appCompatImageView2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginLeft="16dp"
+                android:layout_marginEnd="16dp"
+                android:layout_marginRight="16dp"
+                app:layout_constraintBottom_toTopOf="@+id/appCompatTextView2"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_chainStyle="packed"
+                app:srcCompat="@drawable/sentiment_dissatisfied_black_60" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/appCompatTextView2"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginLeft="16dp"
+                android:layout_marginTop="12dp"
+                android:layout_marginEnd="16dp"
+                android:layout_marginRight="16dp"
+                android:gravity="center_horizontal"
+                android:text="@string/contact_is_empty"
+                android:textAlignment="center"
+                android:textColor="@color/contact_is_empty"
+                android:textSize="16sp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/appCompatImageView2" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/recyclerView"
@@ -14,6 +69,8 @@
             android:layout_height="match_parent"
             android:layout_marginTop="8dp"
             android:layout_marginBottom="70dp"
+            android:visibility="gone"
+            app:visibleGone="@{resource.status == Status.SUCCESS}"
             app:layoutManager="LinearLayoutManager"
             tools:listitem="@layout/recycler_contact_item" />
 
@@ -24,6 +81,8 @@
             android:layout_gravity="bottom|end"
             android:layout_margin="@dimen/fab_margin"
             app:fabSize="normal"
+            android:visibility="gone"
+            app:visibleGone="@{resource.status == Status.SUCCESS}"
             app:srcCompat="@drawable/ic_baseline_add_32" />
 
     </androidx.coordinatorlayout.widget.CoordinatorLayout>

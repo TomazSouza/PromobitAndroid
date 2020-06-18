@@ -13,4 +13,5 @@
     <color name="item_subtitle">#8a000000</color>
     <color name="item_new">#00baff</color>
     <color name="background_item">#ededed</color>
+    <color name="contact_is_empty">#a3000000</color>
 </resources>

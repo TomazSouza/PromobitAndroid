@@ -35,7 +35,6 @@ class ContactFormFragment : Fragment(), Injectable {
     private val mContactViewModel: ContactViewModel by viewModels { mViewModelFactory }
 
     private fun initStatusSaveContact(binding: FragmentFormContactBinding) {
-
         mContactViewModel.contactSavedLiveData.observe(viewLifecycleOwner, Observer {
 
             binding.resource = it
@@ -45,7 +44,6 @@ class ContactFormFragment : Fragment(), Injectable {
                 findNavController().navigate(R.id.nav_home)
             }
         })
-
     }
 
     override fun onCreateView(

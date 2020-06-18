@@ -51,10 +51,6 @@ class MainActivity : AppCompatActivity(), HasSupportFragmentInjector {
         return navController.navigateUp(appBarConfiguration) || super.onSupportNavigateUp()
     }
 
-    override fun onBackPressed() {
-        finish()
-    }
-
     override fun supportFragmentInjector() = dispatchingAndroidInjector
 
 }
