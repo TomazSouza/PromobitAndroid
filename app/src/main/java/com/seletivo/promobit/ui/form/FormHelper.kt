@@ -11,7 +11,7 @@ import com.seletivo.promobit.R
 
 import org.apache.commons.lang.StringUtils
 
-class FormContactHelper(private val itemView: View?) : TextWatcher {
+class FormHelper(private val itemView: View?) : TextWatcher {
 
     private val editFieldNameId = itemView?.findViewById<TextInputEditText>(R.id.editFieldNameId)
     private val textInputLayNameId =

@@ -1,6 +1,6 @@
 package com.seletivo.promobit.di.module
 
-import com.seletivo.promobit.ui.form.ContactFormFragment
+import com.seletivo.promobit.ui.form.FormFragment
 import com.seletivo.promobit.ui.home.HomeFragment
 import dagger.Module
 import dagger.android.ContributesAndroidInjector
@@ -10,7 +10,7 @@ import dagger.android.ContributesAndroidInjector
 abstract class FragmentBuildersModule {
 
     @ContributesAndroidInjector
-    abstract fun contributeContactFormFragment(): ContactFormFragment
+    abstract fun contributeContactFormFragment(): FormFragment
 
     @ContributesAndroidInjector
     abstract fun contributeHomeFragment(): HomeFragment

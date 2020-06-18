@@ -18,24 +18,20 @@ import com.seletivo.promobit.R
 import com.seletivo.promobit.databinding.FragmentFormContactBinding
 import com.seletivo.promobit.di.annotation.Injectable
 import com.seletivo.promobit.enums.Status
-import com.seletivo.promobit.util.async.AppExecutors
 import javax.inject.Inject
 
-class ContactFormFragment : Fragment(), Injectable {
+class FormFragment : Fragment(), Injectable {
 
     @Inject
     lateinit var mViewModelFactory: ViewModelProvider.Factory
 
     @Inject
-    lateinit var appExecutors: AppExecutors
+    lateinit var contactObservable: ContactObservable
 
-    @Inject
-    lateinit var mContactObservable: ContactObservable
-
-    private val mContactViewModel: ContactViewModel by viewModels { mViewModelFactory }
+    private val formViewModel: FormViewModel by viewModels { mViewModelFactory }
 
     private fun initStatusSaveContact(binding: FragmentFormContactBinding) {
-        mContactViewModel.contactSavedLiveData.observe(viewLifecycleOwner, Observer {
+        formViewModel.contactSavedLiveData.observe(viewLifecycleOwner, Observer {
 
             binding.resource = it
 
@@ -59,8 +55,8 @@ class ContactFormFragment : Fragment(), Injectable {
             false
         )
 
-        binding.contacts = mContactObservable
-        FormContactHelper(binding.root)
+        binding.contacts = contactObservable
+        FormHelper(binding.root)
 
         binding.root.findViewById<AppCompatButton>(R.id.btnCancelId).setOnClickListener {
             dismissKeyboard(binding.root.windowToken)
@@ -69,7 +65,7 @@ class ContactFormFragment : Fragment(), Injectable {
 
         binding.root.findViewById<AppCompatButton>(R.id.btnSaveContactId).setOnClickListener {
             dismissKeyboard(binding.root.windowToken)
-            mContactViewModel.setContact(mContactObservable)
+            formViewModel.setContact(contactObservable)
         }
 
         initStatusSaveContact(binding)

@@ -7,7 +7,7 @@ import com.seletivo.promobit.gateway.resource.Resource
 import com.seletivo.promobit.repository.UserRepository
 import javax.inject.Inject
 
-class ContactViewModel @Inject constructor(
+class FormViewModel @Inject constructor(
     private val userRepository: UserRepository
 ) : ViewModel() {
 
