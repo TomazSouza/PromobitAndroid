@@ -66,9 +66,11 @@ class HomeFragment : Fragment(), Injectable {
             false
         )
 
+        val navController = findNavController()
+
         val fab: FloatingActionButton = binding.root.findViewById(R.id.fab)
         fab.setOnClickListener {
-            findNavController().navigate(R.id.nav_form_contact)
+            navController.navigate(R.id.nav_form_contact)
         }
 
         mBinding = binding
