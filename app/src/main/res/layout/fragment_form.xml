@@ -31,6 +31,8 @@
             android:layout_height="0dp"
             android:fillViewport="false"
             app:layout_constraintBottom_toTopOf="@+id/flexBoxLayBtnsId"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_bias="1.0">
 

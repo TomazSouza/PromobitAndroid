@@ -14,7 +14,7 @@
             android:id="@+id/action_nav_home_to_nav_form_contact"
             app:destination="@id/nav_form_contact"
             app:popUpTo="@+id/nav_form_contact"
-            app:popUpToInclusive="true"/>
+            app:popUpToInclusive="true" />
     </fragment>
 
     <fragment
