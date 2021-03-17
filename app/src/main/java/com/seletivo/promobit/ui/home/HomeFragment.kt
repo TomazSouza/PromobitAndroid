@@ -57,7 +57,7 @@ class HomeFragment : Fragment(), Injectable {
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
 
         val binding: FragmentHomeBinding = DataBindingUtil.inflate(
             inflater,
@@ -90,21 +90,26 @@ class HomeFragment : Fragment(), Injectable {
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        if (item.itemId == R.id.action_company_asc) {
-            mHomeViewModel.query(OrderBy.COMPANY_ASC)
-            return true
-        } else if (item.itemId == R.id.action_company_desc) {
-            mHomeViewModel.query(OrderBy.COMPANY_DESC)
-            return true
-        } else if (item.itemId == R.id.action_name_desc) {
-            mHomeViewModel.query(OrderBy.NAME_DESC)
-            return true
-        } else if (item.itemId == R.id.action_name_asc) {
-            mHomeViewModel.query(OrderBy.NAME_ASC)
-            return true
+        when (item.itemId) {
+            R.id.action_company_asc -> {
+                mHomeViewModel.query(OrderBy.COMPANY_ASC)
+                return true
+            }
+            R.id.action_company_desc -> {
+                mHomeViewModel.query(OrderBy.COMPANY_DESC)
+                return true
+            }
+            R.id.action_name_desc -> {
+                mHomeViewModel.query(OrderBy.NAME_DESC)
+                return true
+            }
+            R.id.action_name_asc -> {
+                mHomeViewModel.query(OrderBy.NAME_ASC)
+                return true
+            }
+            else -> return super.onOptionsItemSelected(item)
         }
 
-        return super.onOptionsItemSelected(item)
     }
 
 }

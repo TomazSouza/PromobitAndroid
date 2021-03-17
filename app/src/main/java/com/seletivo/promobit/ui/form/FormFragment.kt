@@ -51,7 +51,7 @@ class FormFragment : Fragment(), Injectable {
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
 
         val binding: FragmentFormBinding = DataBindingUtil.inflate(
             inflater,

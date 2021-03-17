@@ -18,7 +18,6 @@ abstract class ViewModelModule {
     @ViewModelKey(HomeViewModel::class)
     abstract fun bindHomeViewModel(homeViewModel: HomeViewModel): ViewModel
 
-
     @Binds
     @IntoMap
     @ViewModelKey(FormViewModel::class)

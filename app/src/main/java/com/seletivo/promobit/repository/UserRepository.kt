@@ -62,6 +62,7 @@ class UserRepository @Inject constructor(
                 return response.body
             }
         }.asLiveData()
+
     }
 
     fun saveContact(observer: Observer<Resource<Int>>, contactObservable: ContactObservable) {

@@ -197,7 +197,6 @@
 
         </ScrollView>
 
-
         <com.google.android.flexbox.FlexboxLayout
             android:id="@+id/flexBoxLayBtnsId"
             android:layout_width="match_parent"

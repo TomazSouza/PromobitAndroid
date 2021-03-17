@@ -7,5 +7,7 @@ import com.seletivo.promobit.gateway.database.entity.ContactEntity
 
 @Database(entities = [ContactEntity::class], version = 1, exportSchema = false)
 abstract class ContactDb : RoomDatabase() {
+
     abstract fun contactDao() : ContactDao
+
 }

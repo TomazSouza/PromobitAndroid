@@ -2,6 +2,8 @@ package com.seletivo.promobit.adapter
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import android.widget.PopupMenu
+import android.widget.Toast
 import androidx.databinding.DataBindingComponent
 import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.DiffUtil
@@ -40,7 +42,24 @@ class ListContactsAdapter(
     }
 
     override fun bind(binding: RecyclerContactItemBinding, item: ContactEntity) {
-
+        binding.appCompatButton.setOnClickListener {
+            val optionsMenu = PopupMenu(binding.root.context, binding.appCompatButton)
+            optionsMenu.inflate(R.menu.option_menu)
+            optionsMenu.setOnMenuItemClickListener {
+                when (it.itemId) {
+                    R.id.menu_item_save -> {
+                        Toast.makeText(binding.root.context, "Salvar", Toast.LENGTH_SHORT).show()
+                        return@setOnMenuItemClickListener true
+                    }
+                    R.id.menu_item_delete -> {
+                        Toast.makeText(binding.root.context, "Delete", Toast.LENGTH_SHORT).show()
+                        return@setOnMenuItemClickListener true
+                    }
+                }
+                return@setOnMenuItemClickListener false
+            }
+            optionsMenu.show()
+        }
         binding.contactList = item
     }
 }
